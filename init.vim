@@ -1,7 +1,7 @@
 " -- Global
 set number
 set encoding=utf-8
-set cursorline
+" set cursorline
 
 " -- vim-plug
 call plug#begin()
