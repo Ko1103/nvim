@@ -1,3 +1,9 @@
+" -- Global
+set number
+set encoding=utf-8
+set cursorline
+
+" -- vim-plug
 call plug#begin()
 " Use release branch (recommend)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -15,14 +21,15 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'vim-airline/vim-airline', { 'branch': 'master' }
 
 Plug 'tpope/vim-fugitive'
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+
+Plug 'kyazdani42/nvim-tree.lua'
 call plug#end()
 
-" -------------------
-"  UI
-" -------------------
-set number
-set encoding=utf-8
-set cursorline
+" require plugin configs
+:lua require('Ko1103')
 
 "set statusline+=%f
 "set statusline+=%m%r%h%w
@@ -71,12 +78,5 @@ augroup my-glyph-palette
   autocmd FileType nerdtree,startify call glyph_palette#apply()
 augroup END
 
-" ------------------
-"  Color Scheme
-"  -----------------
-let g:tokyonight_style = "night"
 
-colorscheme tokyonight
-
-
-
+" command! Scratch lua require'tools'.makeScratch()
