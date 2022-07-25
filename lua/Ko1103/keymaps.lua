@@ -27,7 +27,7 @@ keymap('n', '<leader>f', ':NvimTreeRefresh<CR>')       -- refresh
 keymap('n', '<leader>n', ':NvimTreeFindFile<CR>')      -- search file
 
 -- Telescope
-keymap('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<CR>')
+keymap('n', '<C-p>', '<cmd>lua require("telescope.builtin").find_files()<CR>')
 keymap('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<CR>')
 keymap('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<CR>')
 keymap('n', '<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<CR>')
