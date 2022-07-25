@@ -24,6 +24,7 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
+Plug 'nvim-lualine/lualine.nvim'
 
 " Plug 'numToStr/Comment.nvim ', { 'branch': 'master' }
 Plug 'numToStr/Comment.nvim'
