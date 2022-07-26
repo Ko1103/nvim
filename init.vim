@@ -1,8 +1,3 @@
-" -- Global
-set number
-set encoding=utf-8
-" set cursorline
-
 " -- vim-plug
 call plug#begin()
 " Use release branch (recommend)
@@ -25,6 +20,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'numToStr/Comment.nvim'
 
 " lsp
@@ -35,4 +31,3 @@ call plug#end()
 
 " require plugin configs
 :lua require('Ko1103')
-
