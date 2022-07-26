@@ -7,7 +7,6 @@ nvimをinstall後、設定しているプラグインなどを反映する手順
 
 1. https://github.com/junegunn/vim-plug を入れる
 2. :PlugInstallでプラグインをinstall、これでcocなどが入る
-3. :CocConfigでcocで使う物をinstall
 
 フォントの反映の仕方は [このブログ](https://ko-yamaura.com) から探せばわかる
 
