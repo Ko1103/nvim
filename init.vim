@@ -6,7 +6,7 @@ set encoding=utf-8
 " -- vim-plug
 call plug#begin()
 " Use release branch (recommend)
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lambdalisue/glyph-palette.vim'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -26,6 +26,10 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'numToStr/Comment.nvim'
+
+" lsp
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'neovim/nvim-lspconfig'
 
 call plug#end()
 
