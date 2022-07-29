@@ -12,6 +12,7 @@ Plug 'tpope/vim-fugitive'
 
 " colortheme
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+" Plug 'bluz71/vim-moonfly-colors'
 
 " new plugins
 Plug 'nvim-lua/plenary.nvim'
@@ -22,6 +23,7 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'numToStr/Comment.nvim'
+Plug 'lewis6991/gitsigns.nvim'
 
 " lsp
 Plug 'williamboman/nvim-lsp-installer'
