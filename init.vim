@@ -12,6 +12,7 @@ Plug 'tpope/vim-fugitive'
 
 " colortheme
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+" Plug 'bluz71/vim-moonfly-colors'
 
 " new plugins
 Plug 'nvim-lua/plenary.nvim'
