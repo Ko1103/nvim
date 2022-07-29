@@ -12,7 +12,7 @@ Plug 'tpope/vim-fugitive'
 
 " colortheme
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-" Plug 'bluz71/vim-moonfly-colors'
+Plug 'bluz71/vim-moonfly-colors'
 
 " new plugins
 Plug 'nvim-lua/plenary.nvim'
@@ -28,6 +28,9 @@ Plug 'lewis6991/gitsigns.nvim'
 " lsp
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
+
+" lint & formatter
+Plug 'jose-elias-alvarez/null-ls.nvim'
 
 call plug#end()
 
