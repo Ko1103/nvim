@@ -24,6 +24,7 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'numToStr/Comment.nvim'
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'ahmedkhalf/project.nvim'
 
 " lsp
 Plug 'williamboman/nvim-lsp-installer'
