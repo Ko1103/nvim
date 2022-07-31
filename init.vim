@@ -25,6 +25,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'numToStr/Comment.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'ahmedkhalf/project.nvim'
+Plug 'editorconfig/editorconfig-vim'
 
 " lsp
 Plug 'williamboman/nvim-lsp-installer'
