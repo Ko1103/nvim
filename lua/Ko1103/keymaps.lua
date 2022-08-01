@@ -32,3 +32,5 @@ keymap('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<CR>
 keymap('n', '<leader>ff', '<cmd>lua require("telescope.builtin").file_files()<CR>')
 keymap('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<CR>')
 keymap('n', '<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<CR>')
+keymap('n', '<leader>fs', '<cmd>lua require("telescope.builtin").grep_string()<CR>')
+
