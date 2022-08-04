@@ -33,6 +33,7 @@ Plug 'editorconfig/editorconfig-vim'
 " lsp
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
+Plug 'weilbith/nvim-lsp-smag'
 
 " lint & formatter
 Plug 'jose-elias-alvarez/null-ls.nvim'
