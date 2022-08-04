@@ -2,6 +2,17 @@ require("mason-lspconfig").setup({
 	ensure_installed = { "sumneko_lua", "tsserver", "gopls" }
 })
 
+local function lsp_highlight_document(client)
+	-- Set autocommands conditional on server_capabilities
+	local status_ok, illuminate = pcall(require, "illuminate")
+	if not status_ok then
+		return
+	end
+	illuminate.on_attach(client)
+	-- end
+end
+
+
 local on_attach = function(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -23,7 +34,7 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 	vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
-
+	lsp_highlight_document(client)
 end
 
 local lsp_flags = {
