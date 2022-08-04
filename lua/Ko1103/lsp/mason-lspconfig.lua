@@ -12,10 +12,29 @@ local function lsp_highlight_document(client)
 	-- end
 end
 
+-- autosave
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+local function lsp_autosave(client, bufnr)
+	if client.supports_method("textDocument/formatting") then
+		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = augroup,
+			buffer = bufnr,
+			callback = function()
+				-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+				vim.lsp.buf.formatting_sync()
+			end,
+		})
+	end
+end
 
 local on_attach = function(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+	if client.name == 'tsserver' then
+		client.resolved_capabilities.document_formatting = false
+	end
 	-- Mappings.
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -35,6 +54,7 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 	vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 	lsp_highlight_document(client)
+	lsp_autosave(client, bufnr)
 end
 
 local lsp_flags = {
