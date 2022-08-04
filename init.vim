@@ -1,7 +1,5 @@
 " -- vim-plug
 call plug#begin()
-" Use release branch (recommend)
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lambdalisue/glyph-palette.vim'
 
 "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -29,9 +27,12 @@ Plug 'numToStr/Comment.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'ahmedkhalf/project.nvim'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'RRethy/vim-illuminate'
 
 " lsp
-Plug 'williamboman/nvim-lsp-installer'
+" Plug 'williamboman/nvim-lsp-installer'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'weilbith/nvim-lsp-smag'
 
