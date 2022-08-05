@@ -46,8 +46,9 @@ Plug 'hrsh7th/nvim-cmp'
 
 " luasnip
 Plug 'hrsh7th/vim-vsnip'
-Plug 'L3MON4D3/LuaSnip'
-Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+" Plug 'L3MON4D3/LuaSnip'
+" Plug 'saadparwaiz1/cmp_luasnip'
 
 call plug#end()
 
