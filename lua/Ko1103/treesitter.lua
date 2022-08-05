@@ -47,6 +47,7 @@ require 'nvim-treesitter.configs'.setup {
 		"vim",
 		"vue",
 		"yaml",
+		"hcl", -- Hashi Corp
 	},
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)

@@ -1,26 +1,32 @@
 require("mason-lspconfig").setup({
-	ensure_installed = { "sumneko_lua", "tsserver", "gopls", "terraform_lsp" },
+	ensure_installed = {
+		"sumneko_lua",
+		"tsserver",
+		-- "gopls",
+		"terraformls",
+		-- "terraform_lsp",
+		"tflint",
+	},
 })
 
 local function lsp_highlight_document(client)
 	-- Set autocommands conditional on server_capabilities
-	-- local status_ok, illuminate = pcall(require, "illuminate")
-	-- if not status_ok then
-	-- 	return
-	-- end
-	-- illuminate.on_attach(client)
-	-- end
-	vim.cmd([[
-set updatetime=500
-highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-augroup lsp_document_highlight
-  autocmd!
-  autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()
-  autocmd CursorMoved,CursorMovedI * lua vim.lsp.buf.clear_references()
-augroup END
-]])
+	local status_ok, illuminate = pcall(require, "illuminate")
+	if not status_ok then
+		return
+	end
+	illuminate.on_attach(client)
+	-- 	vim.cmd([[
+	-- set updatetime=500
+	-- highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+	-- highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+	-- highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+	-- augroup lsp_document_highlight
+	--   autocmd!
+	--   autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()
+	--   autocmd CursorMoved,CursorMovedI * lua vim.lsp.buf.clear_references()
+	-- augroup END
+	-- ]])
 end
 
 -- autosave
