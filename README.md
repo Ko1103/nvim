@@ -15,3 +15,18 @@ nvimをinstall後、設定しているプラグインなどを反映する手順
 ### LSP回り
 nvim-lsp-installerというプラグインが終了するのでmasonに移行
 
+### Languages
+
+#### TypeScript and JavaScript
+
+- eslinnd
+- prettierd
+
+#### Lua
+
+- stylua
+
+#### Terraform
+
+- terraform_fmt
+- tflint
