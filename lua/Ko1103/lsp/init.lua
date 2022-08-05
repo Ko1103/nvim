@@ -6,6 +6,4 @@ end
 require("Ko1103.lsp.cmp")
 require("mason").setup()
 require("Ko1103.lsp.mason-lspconfig")
-
--- for codeformatting
 require("Ko1103.lsp.null-ls")
