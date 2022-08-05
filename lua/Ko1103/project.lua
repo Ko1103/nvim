@@ -4,9 +4,6 @@ if not status_ok then
 end
 
 project.setup({
-	-- your configuration comes here
-	-- or leave it empty to use the default settings
-	-- refer to the configuration section below
 	active = true,
 	manual_mode = false,
 })

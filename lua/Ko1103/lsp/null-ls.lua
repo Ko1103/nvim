@@ -13,18 +13,11 @@ local with_root_file = function(builtin, file)
 end
 
 local sources = {
-	--formattin
 	b.formatting.prettierd,
 	with_root_file(b.formatting.stylua, "stylua.toml"),
 	b.formatting.terraform_fmt,
-
-	-- diagnostics
 	b.diagnostics.eslint,
-
-	-- code actions
 	b.code_actions.eslint_d,
-
-	-- completion
 	b.completion.spell,
 }
 

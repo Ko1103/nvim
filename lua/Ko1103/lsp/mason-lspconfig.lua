@@ -1,12 +1,25 @@
 require("mason-lspconfig").setup({
 	ensure_installed = {
+		-- lua
 		"sumneko_lua",
+
+		-- javascript and typescirpt
 		"tsserver",
-		-- "gopls",
+		"eslint_d",
+		"prettiered",
+
+		-- rust
+		"rust_analyzer",
+
+		"gopls",
+
+		-- terraform
+		-- make sure you have go and terraform
+		-- For Mac, brew install go, terraform
 		"terraformls",
-		-- "terraform_lsp",
 		"tflint",
 	},
+	automatic_installation = true,
 })
 
 local function lsp_highlight_document(client)
