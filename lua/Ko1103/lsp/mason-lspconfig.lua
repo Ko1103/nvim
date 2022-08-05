@@ -28,6 +28,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local lsp_formatting = function(bufnr)
 	vim.lsp.buf.formatting_sync()
+	-- 0.8 or higher
 	-- vim.lsp.buf.format({
 	--     filter = function(client)
 	--         -- apply whatever logic you want (in this example, we'll only use null-ls)
@@ -90,33 +91,6 @@ local on_attach = function(client, bufnr)
 	client.resolved_capabilities.document_formatting = false
 end
 
-local ts_on_attach = function(client, bufnr)
-	-- Mappings.
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	local bufopts = { noremap = true, silent = true, buffer = bufnr }
-	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-	vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-	vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-	vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-	vim.keymap.set("n", "<space>wl", function()
-		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-	end, bufopts)
-	vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
-	vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
-	vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
-	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-	vim.keymap.set("n", "<space>f", vim.lsp.buf.formatting, bufopts)
-
-	-- LSP Handlers
-	vim.lsp.handlers["textDocument/publishDiagnostics"] =
-		vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false })
-
-	lsp_highlight_document(client)
-	lsp_autosave(client, bufnr)
-end
 local lsp_flags = {
 	-- This is the default in Nvim 0.7+
 	debounce_text_changes = 150,
@@ -131,9 +105,6 @@ require("mason-lspconfig").setup_handlers({
 			lsp_flags = lsp_flags,
 			capabilities = capabilities,
 		}
-		if server == "tsserver" then
-			ops.on_attach = ts_on_attach
-		end
 		if server == "sumneko_lua" then
 			ops.settings = {
 				Lua = {
