@@ -4,12 +4,23 @@ require("mason-lspconfig").setup({
 
 local function lsp_highlight_document(client)
 	-- Set autocommands conditional on server_capabilities
-	local status_ok, illuminate = pcall(require, "illuminate")
-	if not status_ok then
-		return
-	end
-	illuminate.on_attach(client)
+	-- local status_ok, illuminate = pcall(require, "illuminate")
+	-- if not status_ok then
+	-- 	return
 	-- end
+	-- illuminate.on_attach(client)
+	-- end
+	vim.cmd [[
+set updatetime=500
+highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+augroup lsp_document_highlight
+  autocmd!
+  autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()
+  autocmd CursorMoved,CursorMovedI * lua vim.lsp.buf.clear_references()
+augroup END
+]]
 end
 
 -- autosave
@@ -30,11 +41,6 @@ local function lsp_autosave(client, bufnr)
 end
 
 local on_attach = function(client, bufnr)
-	-- Enable completion triggered by <c-x><c-o>
-	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-	if client.name == 'tsserver' then
-		client.resolved_capabilities.document_formatting = false
-	end
 	-- Mappings.
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -53,10 +59,49 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 	vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+
+	-- LSP Handlers
+	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+		vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
+	)
+
 	lsp_highlight_document(client)
 	lsp_autosave(client, bufnr)
 end
 
+local ts_on_attach = function(client, bufnr)
+
+	client.server_capabilities.document_formatting = false
+	client.server_capabilities.documentFormattingProvider = false
+
+	-- Mappings.
+	-- See `:help vim.lsp.*` for documentation on any of the below functions
+	local bufopts = { noremap = true, silent = true, buffer = bufnr }
+	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+	vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+	vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+	vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+	vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+	vim.keymap.set('n', '<space>wl', function()
+		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+	end, bufopts)
+	vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+	vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+	vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+	vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+	vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+
+	-- LSP Handlers
+	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+		vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
+	)
+
+
+	lsp_highlight_document(client)
+	lsp_autosave(client, bufnr)
+end
 local lsp_flags = {
 	-- This is the default in Nvim 0.7+
 	debounce_text_changes = 150,
@@ -70,6 +115,9 @@ require("mason-lspconfig").setup_handlers({ function(server)
 		lsp_flags = lsp_flags,
 		capabilities = capabilities
 	}
+	if server == "tsserver" then
+		ops.on_attach = ts_on_attach
+	end
 	if server == "sumneko_lua" then
 		ops.settings = {
 			Lua = {

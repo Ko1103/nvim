@@ -3,9 +3,9 @@ if not status_ok then
 	return
 end
 
+require('Ko1103.lsp.cmp')
 require("mason").setup()
 require("Ko1103.lsp.mason-lspconfig")
-require('Ko1103.lsp.cmp')
 
 -- for codeformatting
 require('Ko1103.lsp.null-ls')
