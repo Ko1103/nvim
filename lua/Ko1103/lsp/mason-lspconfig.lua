@@ -2,11 +2,12 @@ require("mason-lspconfig").setup({
 	ensure_installed = {
 		-- lua
 		"sumneko_lua",
+		"stylua", -- manually install
 
 		-- javascript and typescirpt
 		"tsserver",
-		"eslint_d",
-		"prettiered",
+		"eslint_d", -- manually install
+		"prettiered", -- manually install
 
 		-- rust
 		"rust_analyzer",
