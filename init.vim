@@ -21,9 +21,16 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 
 Plug 'nvim-lualine/lualine.nvim'
+
+" indent
 Plug 'lukas-reineke/indent-blankline.nvim'
+
+" highlight code
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" commentout
 Plug 'numToStr/Comment.nvim'
+
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'ahmedkhalf/project.nvim'
 Plug 'editorconfig/editorconfig-vim'

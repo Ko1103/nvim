@@ -26,6 +26,7 @@ require 'nvim-treesitter.configs'.setup {
 		"sql",
 		"swift",
 		"toml",
+		"typescript",
 		"vim",
 		"vue",
 		"yaml",
