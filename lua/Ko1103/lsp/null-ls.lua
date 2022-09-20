@@ -16,6 +16,7 @@ local sources = {
 	b.formatting.prettierd,
 	with_root_file(b.formatting.stylua, "stylua.toml"),
 	b.formatting.terraform_fmt,
+	b.formatting.rustfmt,
 	b.diagnostics.eslint,
 	b.code_actions.eslint_d,
 	b.completion.spell,

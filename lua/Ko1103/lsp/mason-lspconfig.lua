@@ -8,9 +8,11 @@ require("mason-lspconfig").setup({
 		"tsserver",
 		"eslint_d", -- manually install
 		"prettiered", -- manually install
+		"deno",
 
 		-- rust
 		"rust_analyzer",
+		"rome",
 
 		"gopls",
 
@@ -150,6 +152,13 @@ require("mason-lspconfig").setup_handlers({
 					},
 				},
 			}
+		end
+		local nvim_lsp = require('lspconfig')
+		if server == "denols" then
+			ops.root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc")
+		end
+		if server == "tsserver" then
+			ops.root_dir = nvim_lsp.util.root_pattern("package.json")
 		end
 		require("lspconfig")[server].setup(ops)
 	end,
