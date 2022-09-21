@@ -25,3 +25,5 @@ vim.g.loaded_tarPlugin = true
 vim.g.loaded_tutor_mode_plugin = true
 vim.g.loaded_zipPlugin = true
 vim.g.skip_loading_mswin = true
+
+vim.g.jsdoc_formatter = "tsdoc"

@@ -8,7 +8,7 @@ require("mason-lspconfig").setup({
 		"tsserver",
 		"eslint_d", -- manually install
 		"prettiered", -- manually install
-		-- "denols",
+		"denols",
 
 		-- rust
 		"rust_analyzer",
@@ -155,6 +155,9 @@ require("mason-lspconfig").setup_handlers({
 			}
 		end
 		if server == "tsserver" then
+			ops.root_dir = nvim_lsp.util.root_pattern("package.json")
+		end
+		if server == "eslint_d" or server == "prettiered" then
 			ops.root_dir = nvim_lsp.util.root_pattern("package.json")
 		end
 		require("lspconfig")[server].setup(ops)

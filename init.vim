@@ -48,6 +48,12 @@ Plug 'hrsh7th/vim-vsnip-integ'
 " Plug 'L3MON4D3/LuaSnip'
 " Plug 'saadparwaiz1/cmp_luasnip'
 
+" for typescript
+Plug 'heavenshell/vim-jsdoc', {
+  \ 'for': ['javascript', 'javascript.jsx','typescript'],
+  \ 'do': 'make install'
+\}
+
 Plug 'echasnovski/mini.nvim', { 'branch': 'stable' }
 
 call plug#end()
