@@ -8,18 +8,16 @@ require("mason-lspconfig").setup({
 		"tsserver",
 		"eslint_d", -- manually install
 		"prettiered", -- manually install
-		"denols",
+		-- "denols",
 
 		-- rust
 		"rust_analyzer",
-		"rome",
+		-- "rome",
 
 		"gopls",
 
 		-- terraform
-		-- make sure you have go and terraform
-		-- For Mac, brew install go, terraform
-		"terraformls",
+		-- make sure you have go and terraform For Mac, brew install go, terraform "terraformls",
 		"tflint",
 	},
 	automatic_installation = true,
@@ -135,8 +133,26 @@ require("mason-lspconfig").setup_handlers({
 			}
 		end
 		local nvim_lsp = require("lspconfig")
+		local node_root_dir = nvim_lsp.util.root_pattern("package.json", "node_modules")
+		local buf_name = vim.api.nvim_buf_get_name(0)
+		local current_buf = vim.api.nvim_get_current_buf()
+		local is_node_repo = node_root_dir(buf_name, current_buf) ~= nil
 		if server == "denols" then
+			ops.autostart = not is_node_repo
 			ops.root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc")
+			ops.init_options = {
+				lint = true,
+				unstable = true,
+				suggest = {
+					imports = {
+						hosts = {
+							["https://deno.land"] = true,
+							["https://cdn.nest.land"] = true,
+							["https://crux.land"] = true,
+						},
+					},
+				},
+			}
 		end
 		if server == "tsserver" then
 			ops.root_dir = nvim_lsp.util.root_pattern("package.json")
