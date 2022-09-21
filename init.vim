@@ -10,7 +10,7 @@ Plug 'tpope/vim-fugitive'
 
 " colortheme
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-Plug 'bluz71/vim-moonfly-colors'
+" Plug 'bluz71/vim-moonfly-colors'
 
 " fuzzy finder
 Plug 'nvim-lua/plenary.nvim'
@@ -19,8 +19,6 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 " explorer tree
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
-
-Plug 'nvim-lualine/lualine.nvim'
 
 " indent
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -56,6 +54,8 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 " Plug 'L3MON4D3/LuaSnip'
 " Plug 'saadparwaiz1/cmp_luasnip'
+
+Plug 'echasnovski/mini.nvim', { 'branch': 'stable' }
 
 call plug#end()
 
