@@ -8,7 +8,7 @@ require("mason-lspconfig").setup({
 		"tsserver",
 		"eslint_d", -- manually install
 		"prettiered", -- manually install
-		"deno",
+		"denols",
 
 		-- rust
 		"rust_analyzer",
