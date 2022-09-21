@@ -20,19 +20,12 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 
-" indent
-Plug 'lukas-reineke/indent-blankline.nvim'
-
 " highlight code
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-" commentout
-Plug 'numToStr/Comment.nvim'
 
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'ahmedkhalf/project.nvim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'RRethy/vim-illuminate'
 
 " lsp
 " Plug 'williamboman/nvim-lsp-installer'
