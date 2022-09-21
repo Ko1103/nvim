@@ -49,7 +49,8 @@ end
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local lsp_formatting = function(bufnr)
-	vim.lsp.buf.formatting_sync()
+	-- vim.lsp.buf.formatting_sync()
+	vim.lsp.buf.formatting();
 	-- 0.8 or higher
 	-- vim.lsp.buf.format({
 	--     filter = function(client)

@@ -1,4 +1,4 @@
-local tree_cb = require 'nvim-tree.config'.nvim_tree_callback
+local tree_cb = require("nvim-tree.config").nvim_tree_callback
 
 require("nvim-tree").setup({
 	sort_by = "case_sensitive",
@@ -11,9 +11,9 @@ require("nvim-tree").setup({
 			custom_only = false,
 			list = {
 				{ key = "u", action = "dir_up" },
-				{ key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
-				{ key = "h", cb = tree_cb "close_node" },
-				{ key = "v", cb = tree_cb "vsplit" },
+				{ key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
+				{ key = "h", cb = tree_cb("close_node") },
+				{ key = "v", cb = tree_cb("vsplit") },
 			},
 		},
 	},
@@ -22,6 +22,8 @@ require("nvim-tree").setup({
 	},
 	filters = {
 		dotfiles = false,
+		-- custom = {
+		-- 	"^.git$",
+		-- },
 	},
 })
-

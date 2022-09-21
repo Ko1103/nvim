@@ -14,12 +14,12 @@ end
 
 local sources = {
 	b.formatting.prettierd,
-	with_root_file(b.formatting.stylua, "stylua.toml"),
 	b.formatting.terraform_fmt,
 	b.formatting.rustfmt,
-	b.diagnostics.eslint,
+	with_root_file(b.formatting.stylua, "stylua.toml"),
+	b.diagnostics.eslint_d,
 	b.code_actions.eslint_d,
-	b.completion.spell,
+	-- b.completion.spell,
 }
 
 null_ls.setup({
