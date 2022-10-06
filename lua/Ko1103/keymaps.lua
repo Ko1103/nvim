@@ -34,3 +34,7 @@ keymap("n", "<leader>ff", '<cmd>lua require("telescope.builtin").file_files()<CR
 keymap("n", "<leader>fb", '<cmd>lua require("telescope.builtin").buffers()<CR>')
 keymap("n", "<leader>fh", '<cmd>lua require("telescope.builtin").help_tags()<CR>')
 keymap("n", "<leader>fs", '<cmd>lua require("telescope.builtin").grep_string()<CR>')
+
+-- Jester
+keymap("n", "<leader>jc", '<cmd>lua require"jester".debug_file()<CR>') -- Debug current file
+keymap("n", "<leader>jt", '<cmd>lua require"jester".debug()<CR>') -- Debug nearest test(s) under the cursor
