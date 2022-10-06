@@ -1,8 +1,17 @@
 -- https://github.com/folke/tokyonight.nvim
-vim.g.tokyonight_style = "night"
-vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
-vim.g.tokyonight_transparent = false
-vim.g.tokyonight_colors = { comment = "#008791" }
-
-vim.cmd([[colorscheme tokyonight]])
+-- vim.g.tokyonight_style = "night"
+-- vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
+-- vim.g.tokyonight_transparent = false
+-- vim.g.tokyonight_colors = { comment = "#008791" }
+--
+-- vim.cmd([[colorscheme tokyonight-night]])
 -- vim.cmd[[colorscheme moonfly]]
+-- require("tokyonight").setup({
+-- 	style = "day",
+-- 	sidebars = { "qf", "vista_kind", "terminal", "packer" },
+-- 	transparent = false,
+-- 	on_colors = function(colors)
+-- 		colors.comment = "#008791"
+-- 	end,
+-- })
+vim.cmd([[colorscheme tokyonight-moon]])

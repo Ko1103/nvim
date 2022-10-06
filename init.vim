@@ -10,7 +10,7 @@ Plug 'tpope/vim-fugitive'
 
 " colortheme
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-Plug 'bluz71/vim-moonfly-colors'
+" Plug 'bluz71/vim-moonfly-colors'
 
 " fuzzy finder
 Plug 'nvim-lua/plenary.nvim'
@@ -20,21 +20,12 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 
-Plug 'nvim-lualine/lualine.nvim'
-
-" indent
-Plug 'lukas-reineke/indent-blankline.nvim'
-
 " highlight code
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-" commentout
-Plug 'numToStr/Comment.nvim'
 
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'ahmedkhalf/project.nvim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'RRethy/vim-illuminate'
 
 " lsp
 " Plug 'williamboman/nvim-lsp-installer'
@@ -56,6 +47,14 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 " Plug 'L3MON4D3/LuaSnip'
 " Plug 'saadparwaiz1/cmp_luasnip'
+
+" for typescript
+Plug 'heavenshell/vim-jsdoc', {
+  \ 'for': ['javascript', 'javascript.jsx','typescript'],
+  \ 'do': 'make install'
+\}
+
+Plug 'echasnovski/mini.nvim', { 'branch': 'stable' }
 
 call plug#end()
 

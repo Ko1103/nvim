@@ -12,45 +12,23 @@ require("mason-lspconfig").setup({
 
 		-- rust
 		"rust_analyzer",
-		"rome",
+		-- "rome",
 
 		"gopls",
 
 		-- terraform
-		-- make sure you have go and terraform
-		-- For Mac, brew install go, terraform
-		"terraformls",
+		-- make sure you have go and terraform For Mac, brew install go, terraform "terraformls",
 		"tflint",
 	},
 	automatic_installation = true,
 })
-
-local function lsp_highlight_document(client)
-	-- Set autocommands conditional on server_capabilities
-	local status_ok, illuminate = pcall(require, "illuminate")
-	if not status_ok then
-		return
-	end
-	illuminate.on_attach(client)
-	-- 	vim.cmd([[
-	-- set updatetime=500
-	-- highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-	-- highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-	-- highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-	-- augroup lsp_document_highlight
-	--   autocmd!
-	--   autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()
-	--   autocmd CursorMoved,CursorMovedI * lua vim.lsp.buf.clear_references()
-	-- augroup END
-	-- ]])
-end
 
 -- autosave
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local lsp_formatting = function(bufnr)
 	-- vim.lsp.buf.formatting_sync()
-	vim.lsp.buf.formatting();
+	vim.lsp.buf.formatting()
 	-- 0.8 or higher
 	-- vim.lsp.buf.format({
 	--     filter = function(client)
@@ -109,7 +87,6 @@ local on_attach = function(client, bufnr)
 	vim.lsp.handlers["textDocument/publishDiagnostics"] =
 		vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false })
 
-	lsp_highlight_document(client)
 	lsp_autosave(client, bufnr)
 	client.resolved_capabilities.document_formatting = false
 end
@@ -120,6 +97,7 @@ local lsp_flags = {
 }
 
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 require("mason-lspconfig").setup_handlers({
 	function(server)
@@ -154,11 +132,32 @@ require("mason-lspconfig").setup_handlers({
 				},
 			}
 		end
-		local nvim_lsp = require('lspconfig')
+		local nvim_lsp = require("lspconfig")
+		local node_root_dir = nvim_lsp.util.root_pattern("package.json", "node_modules")
+		local buf_name = vim.api.nvim_buf_get_name(0)
+		local current_buf = vim.api.nvim_get_current_buf()
+		local is_node_repo = node_root_dir(buf_name, current_buf) ~= nil
 		if server == "denols" then
+			ops.autostart = not is_node_repo
 			ops.root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc")
+			ops.init_options = {
+				lint = true,
+				unstable = true,
+				suggest = {
+					imports = {
+						hosts = {
+							["https://deno.land"] = true,
+							["https://cdn.nest.land"] = true,
+							["https://crux.land"] = true,
+						},
+					},
+				},
+			}
 		end
 		if server == "tsserver" then
+			ops.root_dir = nvim_lsp.util.root_pattern("package.json")
+		end
+		if server == "eslint_d" or server == "prettiered" then
 			ops.root_dir = nvim_lsp.util.root_pattern("package.json")
 		end
 		require("lspconfig")[server].setup(ops)
