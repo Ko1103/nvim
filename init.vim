@@ -54,6 +54,10 @@ Plug 'heavenshell/vim-jsdoc', {
   \ 'do': 'make install'
 \}
 
+" for debug with jest
+Plug 'mfussenegger/nvim-dap'
+Plug 'David-Kunz/jester'
+
 Plug 'echasnovski/mini.nvim', { 'branch': 'stable' }
 
 call plug#end()
