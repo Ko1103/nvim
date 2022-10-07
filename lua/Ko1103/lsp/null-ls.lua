@@ -13,7 +13,7 @@ local with_root_file = function(builtin, file)
 end
 
 local sources = {
-	b.formatting.prettierd,
+	with_root_file(b.formatting.prettierd, ".prettierrc"),
 	b.formatting.terraform_fmt,
 	b.formatting.rustfmt,
 	with_root_file(b.formatting.stylua, "stylua.toml"),
